@@ -1,10 +1,16 @@
-import React from 'react'
-
+import Movies from "../components/Movies"
 const Home = () => {
   return (
-    <div>
-      <h1>Home</h1>
+    <div className="row g-3">
+
+      <Movies />
     </div>
+
+
+
+
+
+
   )
 }
 

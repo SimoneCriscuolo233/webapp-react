@@ -6,7 +6,7 @@ const Navbar = () => {
       <div className="container-fluid">
         <div className="col-8">
 
-          <img src="/logo.png" alt="Logo" className="d-inline-block align-text-top" />
+          <img src="./imgs/logo.png" alt="Logo" className="d-inline-block align-text-top" />
           <a className="navbar-brand" href="/">
             The Bool Movies
           </a>
@@ -17,9 +17,9 @@ const Navbar = () => {
             <li className="nav-item">
               <a className="nav-link active" aria-current="page" href="/">Home</a>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <a className="nav-link" href="/movies">Movies</a>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
