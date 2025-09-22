@@ -2,7 +2,7 @@
 const Navbar = () => {
 
   return (
-    <nav className="navbar navbar-expand navbar-dark bg-dark">
+    <nav className="navbar navbar-expand navbar-dark" style={{ backgroundColor: "#181818" }}>
       <div className="container-fluid">
         <div className="col-8">
 
@@ -17,9 +17,6 @@ const Navbar = () => {
             <li className="nav-item">
               <a className="nav-link active" aria-current="page" href="/">Home</a>
             </li>
-            {/* <li className="nav-item">
-              <a className="nav-link" href="/movies">Movies</a>
-            </li> */}
           </ul>
         </div>
       </div>
