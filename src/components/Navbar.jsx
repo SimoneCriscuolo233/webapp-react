@@ -6,7 +6,7 @@ const Navbar = () => {
       <div className="container-fluid">
         <div className="col-8">
 
-          <img src="/imgs/logo.png" alt="Logo" className="d-inline-block align-text-top" />
+          <img src="/imgs/logo.png" alt="Logo" className="d-inline-block align-text-center" style={{ maxWidth: "100px", height: "auto" }} />
           <a className="navbar-brand" href="/">
             The Bool Movies
           </a>
