@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate, replace } from 'react-router-dom';
 import axios from 'axios';
 import StarRating from '../components/StarRating';
 const API_URL = "http://localhost:3000";
@@ -7,15 +7,22 @@ const API_URL = "http://localhost:3000";
 const MovieDetail = () => {
   const { id } = useParams(); // prende l'id dalla route
   const [movie, setMovie] = useState(null);
-
+  const navigate = useNavigate()
   useEffect(() => {
     axios.get(`${API_URL}/movies/${id}`)
       .then(resp => setMovie(resp.data))
-      .catch(err => console.log('Error:', err.message));
+      .catch(() => navigate("/not-found", { replace: true }));
   }, [id]);
 
   if (!movie) return <p>Loading...</p>;
-
+  const goNextPage = () => {
+    const page = parseInt(id) + 1
+    navigate("/movies/" + page)
+  }
+  const goPrevPage = () => {
+    const page = parseInt(id) - 1
+    navigate("/movies/" + page)
+  }
   return (
     <div className="container mt-4">
       <h2 className="d-flex align-items-center">
@@ -46,8 +53,18 @@ const MovieDetail = () => {
         )
       })}
 
+      <div className="container mt-4">
+        <div className="d-flex justify-content-between mb-3">
+          <button className="btn text-white" style={{ backgroundColor: "#181818" }} onClick={() => goPrevPage()} disabled={parseInt(id) === 1 ? true : false}>
+            &laquo; Indietro
+          </button>
+          <button className="btn text-white" style={{ backgroundColor: "#181818" }} onClick={() => goNextPage()}>
+            Avanti &raquo;
+          </button>
+        </div>
 
 
+      </div>
     </div>
   );
 };
