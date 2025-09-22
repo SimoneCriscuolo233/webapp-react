@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-
+import StarRating from '../components/StarRating';
 const API_URL = "http://localhost:3000";
 
 const MovieDetail = () => {
@@ -18,7 +18,15 @@ const MovieDetail = () => {
 
   return (
     <div className="container mt-4">
-      <h2>{movie.title}</h2>
+      <h2 className="d-flex align-items-center">
+        {movie.title}
+        {movie.averageVote && (
+          <span className="ms-2 d-flex align-items-center">
+            <StarRating vote={Math.round(movie.averageVote)} />
+            <span className="ms-1">({Number(movie.averageVote).toFixed(1)})</span>
+          </span>
+        )}
+      </h2>
       <img
         src={movie.image}
         alt={movie.title}
@@ -31,8 +39,10 @@ const MovieDetail = () => {
       <p><strong>Abstract:</strong> {movie.abstract}</p>
       {movie.reviews.map((review) => {
         return (
-          <p key={review.id}><strong>Reviews:</strong> {review.vote} {review.text} <br />
-            {review.name}</p>
+          <div key={review.id} className="mb-2">
+            <StarRating vote={review.vote} /> {/* Passiamo il voto */}
+            <p>{review.text} <br /> <em>- {review.name}</em></p>
+          </div>
         )
       })}
 
