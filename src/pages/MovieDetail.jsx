@@ -29,6 +29,15 @@ const MovieDetail = () => {
       <p><strong>Genre:</strong> {movie.genre}</p>
       <p><strong>Release Year:</strong> {movie.release_year}</p>
       <p><strong>Abstract:</strong> {movie.abstract}</p>
+      {/* {Movies.reviews.map((review) => {
+        return (
+          <p key={review.id}><strong>Reviews:</strong> {review.vote} {reviews.text} <br />
+            {review.name}</p>
+            )
+                })} */}
+
+
+
     </div>
   );
 };
