@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate, replace } from 'react-router-dom';
 import axios from 'axios';
 import StarRating from '../components/StarRating';
+import ReviewForm from '../components/ReviewForm';
 const API_URL = "http://localhost:3000";
 
 const MovieDetail = () => {
@@ -14,6 +15,12 @@ const MovieDetail = () => {
       .catch(() => navigate("/not-found", { replace: true }));
   }, [id]);
 
+  const handleReviewAdded = (review) => {
+    setMovie(prev => ({
+      ...prev,
+      reviews: [...prev.reviews, review]
+    }));
+  };
   if (!movie) return <p>Loading...</p>;
   const goNextPage = () => {
     const page = parseInt(id) + 1
@@ -52,6 +59,9 @@ const MovieDetail = () => {
           </div>
         )
       })}
+
+      <ReviewForm movieId={id} onReviewAdded={handleReviewAdded} />
+
 
       <div className="container mt-4">
         <div className="d-flex justify-content-between mb-3">

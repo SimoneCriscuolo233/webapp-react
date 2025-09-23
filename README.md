@@ -40,3 +40,10 @@ Curare l’aspetto estetico della vostra applicazione
 Realizzare le stelle con font-awesome per la media dei voti
 Realizzare i pulsanti per andare avanti ed indietro tra i film
 Realizzare la pagina NotFound
+
+Day 3
+MILESTONE 2 (FRONTEND)
+
+Creiamo un componente che contenga il form per le recensioni
+Inseriamo questo componente nella pagina di dettaglio del film
+All’invio del form, la nuova recensione viene salvata sul database e visualizzata nella pagina, in fondo alle altre
