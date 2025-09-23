@@ -17,6 +17,9 @@ const Navbar = () => {
             <li className="nav-item">
               <a className="nav-link active" aria-current="page" href="/">Home</a>
             </li>
+            <li className="nav-item">
+              <a className="btn text-white" style={{ backgroundColor: "#F94402" }} aria-current="page" href="/movies/add-movie">Add movie</a>
+            </li>
           </ul>
         </div>
       </div>

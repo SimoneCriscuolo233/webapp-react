@@ -18,12 +18,12 @@ const Movies = () => {
       return (
         <div className="col-12  col-md-6 col-lg-4" key={movie.id}>
           <Link to={`movies/${movie.id}`}>
-            <div className="card" style={{ width: "18rem", cursor: "pointer" }} >
+            <div className="card" style={{ width: "18rem", maxHeight: "34rem", cursor: "pointer" }} >
               <img src={movie.image} className="card-img-top" alt={movie.title} />
               <div className="card-body">
                 <h5 className="card-title">{movie.title}</h5>
                 <p className="card-text">Genre: {movie.genre}</p>
-                <p className="card-text">Director: {movie.director}</p>
+                <p className="card-text pb-3">Director: {movie.director}</p>
               </div>
             </div>
           </Link>
