@@ -15,8 +15,12 @@ const ReviewForm = ({ movieId, onReviewAdded }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.vote || !formData.text) {
+    if (!formData.name || !formData.text) {
       alert("Compila tutti i campi!");
+      return;
+    }
+    if (formData.vote > 5 || formData.vote < 1 || isNaN(formData.vote)) {
+      alert("Inserisci un numero da 1 a 5");
       return;
     }
 

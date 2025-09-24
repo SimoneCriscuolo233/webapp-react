@@ -1,14 +1,20 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
+import { useLoader } from '../context/LoaderContext';
+
 const Movies = () => {
   const [movies, setMovies] = useState([])
+  const { showLoader, hideLoader } = useLoader();
   const API_URL = "http://localhost:3000"
   useEffect(() => {
+    showLoader()
     axios.get(`${API_URL}/movies`).then((resp) => {
       setMovies(resp.data)
+      hideLoader()
     }).catch((err) => console.log('Error', err.message))
-  }), [];
+    hideLoader()
+  }, []);
 
 
   return (

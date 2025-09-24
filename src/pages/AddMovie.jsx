@@ -1,7 +1,9 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import { useLoader } from '../context/LoaderContext';
 
 const AddMovie = () => {
+  const { showLoader, hideLoader } = useLoader();
 
   const [formData, setFormData] = useState({
     title: "",
@@ -18,10 +20,10 @@ const AddMovie = () => {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-
+    showLoader()
     axios.post('http://localhost:3000/movies', formData, {
       headers: { "Content-Type": "multipart/form-data" }
-    })
+    }).then(() => hideLoader())
 
   }
   return (

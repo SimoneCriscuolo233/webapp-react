@@ -3,16 +3,19 @@ import { useParams, useNavigate, replace } from 'react-router-dom';
 import axios from 'axios';
 import StarRating from '../components/StarRating';
 import ReviewForm from '../components/ReviewForm';
+import { useLoader } from '../context/LoaderContext';
 const API_URL = "http://localhost:3000";
 
 const MovieDetail = () => {
   const { id } = useParams(); // prende l'id dalla route
   const [movie, setMovie] = useState(null);
+  const { showLoader, hideLoader } = useLoader()
   const navigate = useNavigate()
   useEffect(() => {
+    showLoader()
     axios.get(`${API_URL}/movies/${id}`)
-      .then(resp => setMovie(resp.data))
-      .catch(() => navigate("/not-found", { replace: true }));
+      .then(resp => setMovie(resp.data), /*hideLoader()*/).catch(() => navigate("/not-found", { replace: true }))
+    hideLoader();
   }, [id]);
 
   const handleReviewAdded = (review) => {
